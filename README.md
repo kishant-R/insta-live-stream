@@ -70,3 +70,17 @@ The data/raw_orders.json file contains example order data that can be used to te
 -> Storing processed events in a database
 
 -> Adding logging and monitoring
+
+**System Architecture**
+
+Incoming Event (Webhook)
+        ↓
+Flask Server (main.py)
+        ↓
+Producer Module
+        ↓
+Event Stream
+        ↓
+Consumer Module
+        ↓
+Processed Output
