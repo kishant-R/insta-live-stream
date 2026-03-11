@@ -1,11 +1,33 @@
+from flask import Flask, request
 from producer import produce_data
 from consumer import consume_data
 
+app = Flask(__name__)
 
-def main():
-    stream_data = produce_data(5)
+VERIFY_TOKEN = "test_token"
+
+
+@app.route("/", methods=["GET"])
+def verify():
+    mode = request.args.get("hub.mode")
+    token = request.args.get("hub.verify_token")
+    challenge = request.args.get("hub.challenge")
+
+    if mode == "subscribe" and token == VERIFY_TOKEN:
+        return challenge, 200
+    return "Verification failed", 403
+
+
+@app.route("/", methods=["POST"])
+def webhook():
+    data = request.json
+    print("Incoming webhook:", data)
+
+    stream_data = produce_data(3)
     consume_data(stream_data)
+
+    return "Event Received", 200
 
 
 if __name__ == "__main__":
-    main()
+    app.run(port=5000)
