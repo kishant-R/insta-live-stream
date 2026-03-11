@@ -1,0 +1,14 @@
+[
+  {
+    "order_id": 596,
+    "user": "kish",
+    "product": "Laptop",
+    "amount": 1200
+  },
+  {
+    "order_id": 092,
+    "user": "deep",
+    "product": "Phone",
+    "amount": 800
+  }
+]
