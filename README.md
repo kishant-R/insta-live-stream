@@ -73,6 +73,7 @@ The data/raw_orders.json file contains example order data that can be used to te
 
 **System Architecture**
 
+```
 Incoming Event (Webhook)
         ↓
 Flask Server (main.py)
@@ -84,3 +85,4 @@ Event Stream
 Consumer Module
         ↓
 Processed Output
+```
